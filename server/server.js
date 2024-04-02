@@ -22,8 +22,15 @@ mongoose.connect(process.env.MONGODB_URI, {
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // CORS middleware setup
+let baseurl
+
+if (process.env.BASE_URL) {
+  baseurl = process.env.BASE_URL
+} else {
+  throw new Error("URI not defined")
+};
 app.use(cors({
-    origin: [process.env.BASE_URL],
+    origin: [baseurl],
     methods: ["GET", "POST", "PUT", "DELETE","PATCH"],
     credentials: true,
 }));
