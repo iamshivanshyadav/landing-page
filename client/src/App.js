@@ -18,7 +18,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/form', formData);
+      const response = await axios.post('https://landing-page-qkar.onrender.com/api/form', formData);
       alert(response.data.message);
       setFormData({ name: '', email: '', phone: '' });
       setError('');
